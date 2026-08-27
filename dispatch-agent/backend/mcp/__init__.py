@@ -1,0 +1,1 @@
+"""Mock MCP package - provides FastMCP compatible interface."""

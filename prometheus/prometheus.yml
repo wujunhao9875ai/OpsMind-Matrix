@@ -1,0 +1,41 @@
+# ============================================================
+# 运维 AI 平台 - Prometheus 监控配置
+# ============================================================
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "orchestrator"
+    static_configs:
+      - targets: ["orchestrator:8000"]
+    metrics_path: "/metrics"
+
+  - job_name: "ops-agent"
+    static_configs:
+      - targets: ["ops-agent:8000"]
+    metrics_path: "/metrics"
+
+  - job_name: "dispatch-agent"
+    static_configs:
+      - targets: ["dispatch-agent:8000"]
+    metrics_path: "/metrics"
+
+  - job_name: "warehouse-agent"
+    static_configs:
+      - targets: ["warehouse-agent:8000"]
+    metrics_path: "/metrics"
+
+  - job_name: "data-platform"
+    static_configs:
+      - targets: ["data-platform:8000"]
+    metrics_path: "/metrics"
+
+  - job_name: "redis"
+    static_configs:
+      - targets: ["redis:6379"]
+
+  - job_name: "postgresql"
+    static_configs:
+      - targets: ["orchestrator-db:5432", "ops-db:5432", "dispatch-db:5432", "warehouse-db:5432", "dataplatform-db:5432"]

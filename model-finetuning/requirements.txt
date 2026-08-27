@@ -1,0 +1,21 @@
+# Core
+torch>=2.0.0
+transformers>=4.40.0
+datasets>=2.18.0
+accelerate>=0.28.0
+peft>=0.10.0
+bitsandbytes>=0.42.0
+
+# Evaluation
+nltk>=3.8
+rouge-score>=0.1.2
+sacrebleu>=2.4.0
+bert-score>=0.3.13
+
+# MLflow
+mlflow>=2.14.0
+
+# Utilities
+pyyaml>=6.0
+httpx>=0.28.0
+python-dotenv>=1.0.0

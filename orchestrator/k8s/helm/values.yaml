@@ -1,0 +1,42 @@
+# ============================================================
+# 运维 AI 平台 - K8s Helm Chart 占位文件
+# 当前阶段使用 Docker Compose 部署，此目录为 K8s 迁移预留
+# ============================================================
+#
+# Docker Compose → K8s 映射关系：
+#   Consul 服务注册 → K8s Service + DNS
+#   Consul 健康检查 → K8s Liveness/Readiness Probe
+#   Nginx 负载均衡 → K8s Ingress + Service
+#   Docker Compose 编排 → K8s Deployment + StatefulSet
+#   Redis 会话 → K8s Service (或 Redis Cluster)
+#   结构化日志 → Fluentd → Elasticsearch
+#   traceId 追踪 → Jaeger / Zipkin
+#
+# 迁移条件：Agent 实例 > 10、日均请求 > 10 万
+# ============================================================
+
+# 示例配置（待正式迁移时填充）
+replicaCount: 2
+
+image:
+  repository: ops-platform/orchestrator
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8000
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80

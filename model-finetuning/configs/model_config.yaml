@@ -1,0 +1,26 @@
+# Model Version Configuration
+models:
+  production:
+    name: "ops-agent:v2.0-lora"
+    base: "qwen2.5:7b-instruct"
+    version: "2.0.0"
+    deployed_at: "2026-08-01"
+    status: "active"
+
+  candidates:
+    - name: "ops-agent:v2.1-lora"
+      base: "qwen2.5:7b-instruct"
+      version: "2.1.0"
+      status: "testing"
+
+ab_testing:
+  enabled: false
+  traffic_split:
+    production: 90
+    candidate: 10
+  evaluation_period_days: 7
+  decision_threshold: 5  # candidate must be 5% better
+
+mlflow:
+  tracking_uri: "http://mlflow:5000"
+  experiment_name: "ops-agent-finetuning"
